@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Station — Interactive Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="site-header">
+  <div class="header-inner">
+    <span class="logo">SIGNAL STATION</span>
+    <span id="clock" class="clock">--:--:-- --</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- MOUSE: spotlight follows cursor | TIME: greeting set from current hour -->
+  <section id="hero" class="hero-panel">
+    <div class="spotlight"></div>
+    <div class="hero-content">
+      <p id="greeting" class="greeting">Loading status…</p>
+      <h1>Systems Online</h1>
+      <p class="hero-sub">
+        Move your mouse across this panel to sweep the scanner light.
+        Resize the window, scroll the page, or use your keyboard to
+        explore the rest of the station.
+      </p>
+    </div>
+  </section>
+
+  <!-- MOUSE/TOUCH: click toggles theme | WINDOW: live viewport size -->
+  <section class="controls">
+    <button id="theme-toggle" class="btn">🌙 Deep Mode</button>
+    <div class="readout">
+      <span class="readout-label">Viewport</span>
+      <span id="size-readout">—</span>
+    </div>
+  </section>
+
+  <!-- KEYBOARD: arrow keys page through entries | TOUCH: swipe left/right -->
+  <section id="log-carousel" class="log-carousel">
+    <h2>Station Log</h2>
+    <p class="hint">Use ← → keys or swipe to page through entries.</p>
+
+    <div class="log-entries">
+      <article class="log-entry active">
+        <h3>Entry 01 — Surface Check</h3>
+        <p>All buoys reporting calm seas and clear skies above the station.</p>
+      </article>
+      <article class="log-entry">
+        <h3>Entry 02 — Pressure Reading</h3>
+        <p>Hull pressure steady. No anomalies detected on the outer sensors.</p>
+      </article>
+      <article class="log-entry">
+        <h3>Entry 03 — Signal Sweep</h3>
+        <p>Long-range scanner complete. No unidentified contacts nearby.</p>
+      </article>
+      <article class="log-entry">
+        <h3>Entry 04 — Crew Note</h3>
+        <p>Rotating watch shift. Coffee reserves holding steady for now.</p>
+      </article>
+    </div>
+
+    <div id="log-dots" class="dots"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>Station time, viewport size, and log paging all update live —
+     try resizing, scrolling, clicking, and pressing arrow keys.</p>
+</footer>
+
+<!--
+  script.js only DECLARES the functions below.
+  This inline script INVOKES them once the DOM is ready.
+-->
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    initClock();
+    initGreeting();
+    initSpotlight();
+    initThemeToggle();
+    initResizeReadout();
+    initScrollHeader();
+    initLogNavigation();
+  });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
